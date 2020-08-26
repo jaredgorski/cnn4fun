@@ -11,7 +11,7 @@ The `cnn` package contains a primary `CNN` class as well as convolutional and ma
 
 The network supports both grayscale and RGB images.
 
-To run with the MNIST dataset:
+#### To run with the MNIST dataset:
 1. clone this repo locally
 2. have Python 3 and pip installed on your machine
 3. install dependencies with `pip install -r requirements.txt`
