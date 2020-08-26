@@ -23,6 +23,7 @@ class CNN:
         layers.reverse()
         self.reverse_layers = layers
 
+    # TODO: move to util
     def __log_progress(self, percent_correct_last_50, loss, num_cycles, t_len):
         avg_loss = round((loss / num_cycles), 3)
 
@@ -35,6 +36,7 @@ class CNN:
         sys.stdout.flush()
         sys.stdout.write("\b" * len(progress))
 
+    # TODO: move to util
     def __log_epoch_results(self, epoch_index, rate, num_correct, loss, t_len, x_training_cycles, y_mean_correct):
         layers = '\n'
         for layer in self.layers:
