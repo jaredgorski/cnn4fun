@@ -12,12 +12,13 @@ layers = [
     ConvLayer(num_kernels=8),
     MaxPoolLayer(),
 ]
-
 classes = [x for x in range(10)]
 
+# initialize
+n = cnn.CNN(layers)
+
 # train
-n = cnn.CNN(training_images, training_labels, layers, classes)
-n.train(num_epochs=3, rate=0.005)
+n.train(training_images, training_labels, classes, num_epochs=3, rate=0.005)
 
 # predict
 print('\n\n>>> Testing model...\n')
