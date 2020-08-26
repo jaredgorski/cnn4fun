@@ -1,0 +1,5 @@
+mnist
+numpy
+opencv-python
+pytest
+termplotlib
