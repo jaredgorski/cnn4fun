@@ -133,3 +133,4 @@ image_out/
 video_out/
 media.py
 sample
+*.pickle
