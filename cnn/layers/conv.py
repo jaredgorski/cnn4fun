@@ -84,7 +84,7 @@ class ConvLayer:
             for slice, j, k in self.__slice_generator(loss_gradient):
                 delta_loss_gradient[j, k] += np.sum(slice * self.kernels[i])
             
-            delta_bias[i] = np.sum(loss_gradient[i])
+            delta_bias[i] = np.sum(loss_gradient[:, :, i])
 
         self.kernels -= rate * delta_kernels
         self.bias = delta_bias
