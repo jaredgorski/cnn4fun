@@ -22,6 +22,5 @@ To run unit tests, run `python -m pytest`.
 #### To do:
 - improve unit test coverage and depth
 - improve activation layer logic, add ReLU
-- optimize grayscale images in the convolution layer by conditionally circumventing channel depth logic
 - eventually support bounding boxes on prediction
 - improve code clarity/internal documentation
