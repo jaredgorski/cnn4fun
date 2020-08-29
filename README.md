@@ -22,5 +22,4 @@ To run unit tests, run `python -m pytest`.
 #### To do:
 - improve unit test coverage and depth
 - improve activation layer logic, add ReLU
-- eventually support bounding boxes on prediction
 - improve code clarity/internal documentation
