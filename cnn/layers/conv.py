@@ -26,16 +26,16 @@ class ConvLayer:
         h_stride = ((h - kernel_dimension) // stride) + 1
         w_stride = ((w - kernel_dimension) // stride) + 1
 
-        valid_padding = (h - h_stride) // 2
+        same_padding = (h - h_stride) // 2
 
-        return h_stride, w_stride, valid_padding
+        return h_stride, w_stride, same_padding
 
     def __slice_generator(self, input):
         stride = self.stride
         size = self.kernel_dimension
 
-        h_stride, w_stride, valid_padding = self.__calc_stride_dimensions(input)
-        npad = ((valid_padding, valid_padding), (0, 0), (0, 0))
+        h_stride, w_stride, same_padding = self.__calc_stride_dimensions(input)
+        npad = ((same_padding, same_padding), (0, 0), (0, 0))
         input = np.pad(input, npad)
 
         for i in range(h_stride):

@@ -23,9 +23,9 @@ def test_feedforward_kernel_output_maps():
     assert 5 == o_n, "Number of output maps does not account for kernels"
 
 """
-Layer should apply valid padding, so output dimensions should match input dimensions.
+Layer should apply same padding, so output dimensions should match input dimensions.
 """
-def test_valid_padded_output():
+def test_same_padded_output():
     layer = conv_layer_3x3
     input = test_maps_8x8x3
     output = layer.feedforward(input)
