@@ -1,6 +1,6 @@
 import numpy as np
 
-from cnn.layers.conv import ConvLayer
+from cnn import ConvLayer
 
 # setup test maps
 test_maps_8x8x1 = np.arange(64).reshape(8, 8, 1)

@@ -7,7 +7,7 @@
   <img src="https://github.com/jaredgorski/cnn4fun/raw/master/.media/screenshot.png" width="600" />
 </div>
 
-The `cnn` package contains a primary `CNN` class as well as convolution and max-pooling layers at `cnn.layers.conv.ConvLayer` and `cnn.layers.maxpool.MaxPoolLayer`, respectively. These layers can be configured along with the learning rate in order to fine-tune the training of the network. This network currently works with the [MNIST handwritten digits dataset](http://yann.lecun.com/exdb/mnist/), which can be tested by running `python run_mnist.py`.
+The `cnn` package contains a primary `cnn.CNN` class as well as convolution and max-pooling layers at `cnn.ConvLayer` and `cnn.MaxPoolLayer`, respectively. These layers can be configured along with the learning rate in order to fine-tune the training of the network. This network currently works with the [MNIST handwritten digits dataset](http://yann.lecun.com/exdb/mnist/), which can be tested by running `python run_mnist.py`.
 
 The network supports both grayscale and RGB images.
 

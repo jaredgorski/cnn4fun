@@ -3,8 +3,6 @@ import numpy as np
 import pickle
 
 import cnn
-from cnn.layers.conv import ConvLayer
-from cnn.layers.maxpool import MaxPoolLayer
 
 training_images = mnist.train_images()[:5000]
 training_labels = mnist.train_labels()[:5000]
@@ -28,8 +26,8 @@ if should_load:
     net = pickle.load(pickle_in)
 else:
     layers = [
-        ConvLayer(num_kernels=16),
-        MaxPoolLayer(),
+        cnn.ConvLayer(num_kernels=16),
+        cnn.MaxPoolLayer(),
     ]
     net = cnn.CNN(layers)
 
