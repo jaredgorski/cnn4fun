@@ -21,5 +21,5 @@ To run unit tests, run `python -m pytest`.
 
 #### To do:
 - improve unit test coverage and depth
-- improve activation layer logic, add ReLU
+- improve activation layer logic
 - improve code clarity/internal documentation

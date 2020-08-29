@@ -10,13 +10,6 @@ class ActivationLayer:
     def __relu_activation(self, input):
         return max(0.0, input)
 
-    def __flatten_and_rectify(self, input):
-        input = input.flatten()
-        # TODO: implement backprop for relu before uncommenting this
-        # input = [self.__relu_activation(x) for x in input]
-
-        return input
-
     def __init_weights_and_biases(self):
         if self.flattened_input_len and len(self.weights) == 0 and len(self.biases) == 0:
             input_len = self.flattened_input_len
@@ -28,8 +21,7 @@ class ActivationLayer:
     def feedforward(self, input):
         self.prev_input_shape = input.shape
 
-        input = self.__flatten_and_rectify(input)
-
+        input = input.flatten()
         self.flattened_input_len = len(input)
         self.prev_input = input
 
