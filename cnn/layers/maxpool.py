@@ -1,8 +1,8 @@
 import numpy as np
 
-class MaxPoolLayer:
+class MaxPool:
 
-    def __init__(self, stride=2, kernel_dimension=2):
+    def __init__(self, kernel_dimension=2, stride=2):
         self.l_name = f'MaxPool kernel_dim={kernel_dimension} stride={stride}'
         self.depth = None
         self.kernel_dimension = kernel_dimension

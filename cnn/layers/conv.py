@@ -1,6 +1,6 @@
 import numpy as np
 
-class ConvLayer:
+class Conv:
 
     def __init__(self, num_kernels, kernel_dimension=3, stride=1):
         self.l_name = f'Conv num_kernels={num_kernels} kernel_dim={kernel_dimension} stride={stride}'

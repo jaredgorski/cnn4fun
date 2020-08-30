@@ -1,2 +1,3 @@
-from .conv import ConvLayer
-from .maxpool import MaxPoolLayer
+from .conv import Conv
+from .maxpool import MaxPool
+from .softmax import SoftMax

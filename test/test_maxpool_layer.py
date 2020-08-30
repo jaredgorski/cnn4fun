@@ -1,6 +1,6 @@
 import numpy as np
 
-from cnn import MaxPoolLayer
+from cnn.layers import MaxPool
 
 # setup test maps
 test_maps_8x8x1 = np.arange(64).reshape(8, 8, 1)
@@ -9,9 +9,9 @@ test_maps_9x9x1 = np.arange(81).reshape(9, 9, 1)
 test_maps_9x9x3 = np.arange(243).reshape(9, 9, 3)
 
 # setup test layers
-maxpool_layer_122 = MaxPoolLayer(stride=2, kernel_dimension=2)
-maxpool_layer_322 = MaxPoolLayer(stride=2, kernel_dimension=2)
-maxpool_layer_133 = MaxPoolLayer(stride=3, kernel_dimension=3)
+maxpool_layer_122 = MaxPool(kernel_dimension=2, stride=2)
+maxpool_layer_322 = MaxPool(kernel_dimension=2, stride=2)
+maxpool_layer_133 = MaxPool(kernel_dimension=3, stride=3)
 
 """
 The layer should not change the number of maps in the input.

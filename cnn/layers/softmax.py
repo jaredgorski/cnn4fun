@@ -1,14 +1,12 @@
 import numpy as np
 
-class ActivationLayer:
+class SoftMax:
 
     def __init__(self, num_classes):
+        self.l_name = f'SoftMax num_classes={num_classes}'
         self.num_classes = num_classes
         self.weights = []
         self.biases = []
-
-    def __relu_activation(self, input):
-        return max(0.0, input)
 
     def __init_weights_and_biases(self):
         if self.flattened_input_len and len(self.weights) == 0 and len(self.biases) == 0:

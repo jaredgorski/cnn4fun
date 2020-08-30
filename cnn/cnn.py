@@ -1,7 +1,6 @@
 import numpy as np
 
 from .util import log
-from .layers.activation import ActivationLayer
 
 """
 If program `gnuplot` is available, set global
@@ -42,7 +41,7 @@ class CNN:
         for layer in self.layers:
             output = layer.feedforward(output)
 
-        return self.activation_layer.feedforward(output)
+        return output
 
     def __feedforward(self, input, class_index):
         output = self.__feedforward_output(input)
@@ -54,8 +53,6 @@ class CNN:
         return output, loss, correct
 
     def __backpropagate(self, loss_gradient, rate):
-        loss_gradient = self.activation_layer.backpropagate(loss_gradient, rate)
-
         for layer in self.reverse_layers:
             loss_gradient = layer.backpropagate(loss_gradient, rate)
 
@@ -75,7 +72,6 @@ class CNN:
         self.training_images = training_images
         self.training_labels = training_labels
         self.classes = classes
-        self.activation_layer = ActivationLayer(len(classes))
 
         print('\n\n>>> Train is leaving the station.\n');
 

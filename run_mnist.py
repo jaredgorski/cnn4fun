@@ -26,8 +26,9 @@ if should_load:
     net = pickle.load(pickle_in)
 else:
     layers = [
-        cnn.ConvLayer(num_kernels=16),
-        cnn.MaxPoolLayer(),
+        cnn.layers.Conv(num_kernels=16),
+        cnn.layers.MaxPool(),
+        cnn.layers.SoftMax(num_classes=10),
     ]
     net = cnn.CNN(layers)
 

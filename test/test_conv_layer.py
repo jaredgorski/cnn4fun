@@ -1,14 +1,14 @@
 import numpy as np
 
-from cnn import ConvLayer
+from cnn.layers import Conv
 
 # setup test maps
 test_maps_8x8x1 = np.arange(64).reshape(8, 8, 1)
 test_maps_8x8x3 = np.arange(192).reshape(8, 8, 3)
 
 # setup test layers
-conv_layer_3x3 = ConvLayer(num_kernels=5, kernel_dimension=3)
-conv_layer_5x5 = ConvLayer(num_kernels=5, kernel_dimension=5)
+conv_layer_3x3 = Conv(num_kernels=5, kernel_dimension=3)
+conv_layer_5x5 = Conv(num_kernels=5, kernel_dimension=5)
 
 """
 A layer with 5 kernels should result in output maps with depth=5.
