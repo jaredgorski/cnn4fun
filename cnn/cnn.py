@@ -1,11 +1,10 @@
-import sys
-
 import numpy as np
 
-from cnn.layers.activation import ActivationLayer
+from .util import log
+from .layers.activation import ActivationLayer
 
 """
-If program `gnuplot` is available, set global and import `termplotlib`
+If program `gnuplot` is available, set global
 """
 def has_gnuplot():
     from shutil import which
@@ -13,56 +12,12 @@ def has_gnuplot():
 
 has_gnuplot = has_gnuplot()
 
-if has_gnuplot:
-    import termplotlib as tpl
-
 class CNN:
 
     def __init__(self, layers):
         self.layers = layers.copy()
         layers.reverse()
         self.reverse_layers = layers
-
-    # TODO: move to util
-    def __log_progress(self, percent_correct_last_50, loss, num_cycles, t_len):
-        avg_loss = round((loss / num_cycles), 3)
-
-        fmt = '{:<8}'
-        f_c = fmt.format(f'{percent_correct_last_50} %')
-        f_l = fmt.format(f'{avg_loss}')
-        progress = f'[ {num_cycles} / {t_len} ]  --  % correct of last 50: {f_c} |  Avg. loss: {f_l}'
-
-        sys.stdout.write(progress)
-        sys.stdout.flush()
-        sys.stdout.write("\b" * len(progress))
-
-    # TODO: move to util
-    def __log_epoch_results(self, epoch_index, rate, num_correct, loss, t_len, x_training_cycles, y_mean_correct):
-        layers = '\n'
-        for layer in self.layers:
-            name = layer.l_name
-            layers += f'     {name}\n'
-
-        avg_loss = round((loss / t_len), 3)
-        percent_correct = round(((num_correct / t_len) * 100), 3)
-        num_classes = len(self.classes)
-
-        print('\n\n---\n')
-        print(f'Epoch {epoch_index} summary:\n')
-        print(f' Config:')
-        print(f'   Learning rate: {rate}')
-        print(f'   Layers: {layers}')
-        print(f' Results:')
-        print(f'   Number correct: {num_correct}')
-        print(f'   Percent correct: {percent_correct}')
-        print(f'   Average loss: {avg_loss}')
-        print(f'   Number of classes: {num_classes}')
-        print('\n---\n')
-
-        if has_gnuplot:
-            fig = tpl.figure()
-            fig.plot(x_training_cycles, y_mean_correct, width = 60, height=20, ylim=(0, 100), title='% correct per 50 over time')
-            fig.show()
 
     def __set_depth_if_grayscale(self, input):
         input_shape = input.shape
@@ -123,7 +78,6 @@ class CNN:
         self.activation_layer = ActivationLayer(len(classes))
 
         print('\n\n>>> Train is leaving the station.\n');
-        # TODO: print info about the training
 
         if not has_gnuplot:
             print('\n    NOTE: to see graphs, install `gnuplot`.\n')
@@ -152,7 +106,7 @@ class CNN:
                     correct_last_50 = 0
 
                 num_cycles = i + 1
-                self.__log_progress(percent_correct_last_50, loss, num_cycles, t_len)
+                log.log_progress(percent_correct_last_50, loss, num_cycles, t_len)
 
                 x_training_cycles.append(i)
                 y_mean_correct.append(percent_correct_last_50)
@@ -162,7 +116,7 @@ class CNN:
                 correct_last_50 += correct_add
                 loss += i_loss
 
-            self.__log_epoch_results(epoch + 1, rate, num_correct, loss, t_len, x_training_cycles, y_mean_correct)
+            log.log_epoch_results(self.layers, epoch + 1, rate, num_correct, loss, t_len, x_training_cycles, y_mean_correct, len(self.classes))
             print('\n')
 
         print('\nEnd training.\n')
