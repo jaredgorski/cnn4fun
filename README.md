@@ -35,7 +35,7 @@ layers = [
     cnn.layers.MaxPool(kernel_dimension=2, stride=2),
     cnn.layers.Conv(num_kernels=16, kernel_dimension=3, stride=1),
     cnn.layers.MaxPool(kernel_dimension=2, stride=2),
-    cnn.layers.SoftMax(num_classes=10),
+    cnn.layers.SoftMax(num_classes=2),
 ]
 
 # initialize network object
