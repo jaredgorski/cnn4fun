@@ -4,8 +4,8 @@ import pickle
 
 import cnn
 
-training_images = mnist.train_images()[:5000]
-training_labels = mnist.train_labels()[:5000]
+training_images = mnist.train_images()
+training_labels = mnist.train_labels()
 
 ## uncomment below to train mnist images as RGB data
 # import cv2
@@ -36,7 +36,7 @@ else:
 answer = input("Would you like to train? (enter 'y' to train): ")
 should_train = answer == 'y'
 if should_train:
-    net.train(training_images, training_labels, classes, num_epochs=3, rate=0.005)
+    net.train(training_images, training_labels, classes, num_epochs=5, rate=0.005)
 
 # predict
 answer = input("Would you like to test the model? (enter 'y' to test): ")
