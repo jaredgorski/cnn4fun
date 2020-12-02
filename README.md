@@ -57,7 +57,3 @@ correct = prediction == test_label
 
 #### Tests:
 - To run unit tests, run `python -m pytest`.
-
-## To do:
-- improve unit test coverage and depth
-- improve code clarity/internal documentation
